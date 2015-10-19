@@ -13,12 +13,30 @@ $(document).ready(function(){
 
   App.prototype.addPost = function () {
     var that = this;
-  	$("#submit").on("click", function(e) {
-  		var input = $("#input").val();
-      var listHtml = "<li class='list-group-item'>" + input + "<span class='glyphicon glyphicon-remove' aria-hidden='true'></span></li>";
-  		$("ul").append(listHtml);
-      numPosts++;
-      that.updateCounter();
+  	$("#submit").on("submit", function(e) {
+      // $.post("/api/newPost", $(this).serialize(), function(response){
+      //   var newPost = response;
+      //   var postString = makeHTMLString(newPost);
+      // });
+
+      e.preventDefault();
+      var postId = $(e).data().id;
+      $.ajax({
+        url: '/api/newPost/' + postId,
+        type: 'POST',
+        data: $(e).serialize(),
+        success: function(response) {
+          console.log("post to database worked");
+          // once successful, remove food from the DOM
+          //$(e).closest('li').remove();
+        }
+      });
+
+  		// var input = $("#input").val();
+    //   var listHtml = "<li class='list-group-item'>" + input + "<span class='glyphicon glyphicon-remove' aria-hidden='true'></span></li>";
+  		// $("ul").append(listHtml);
+    //   numPosts++;
+    //   that.updateCounter();
   	});
   };
 

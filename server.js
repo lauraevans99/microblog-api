@@ -16,6 +16,31 @@ app.get("/", function(req, res){
 	res.render('index.ejs');
 });
 
+// A route to read all blog posts
+app.get("/api/posts", function(req, res){
+	res.sendStatus(200);
+});
+
+// A route to read one blog post
+app.get("/api/posts/:id", function(req, res){
+	res.sendStatus(200);
+});
+
+// A route to create a new blog post
+app.post("/api/posts", function(req, res){
+	res.sendStatus(200);
+});
+
+// A route to update a single blog post
+app.put("/api/posts/:id", function(req, res){
+	res.sendStatus(200);
+});
+
+// A route to delete a single blog post
+app.delete("/api/posts/:id", function(req, res){
+	res.sendStatus(200);
+});
+
 
 
 
