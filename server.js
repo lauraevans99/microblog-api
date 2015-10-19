@@ -2,9 +2,10 @@
 // REQUIREMENTS //
 var express = require("express");
 var bodyParser = require("body-parser");
-
+var path = require("path");
 var app = express();
 
+var db = require("./models");
 // CONFIG //
 app.set('view engine', 'ejs');
 app.use("/static", express.static("public"));
@@ -13,7 +14,8 @@ app.use("/static", express.static("public"));
 // ROUTES //
 app.get("/", function(req, res){
 	//res.send("Working!");
-	res.render('index.ejs');
+	res.render('index.ejs', {posts: posts});
+	console.log(Post);
 });
 
 // A route to read all blog posts
